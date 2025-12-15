@@ -1,57 +1,97 @@
-# Sample Hardhat 3 Beta Project (`node:test` and `viem`)
+PiastreACT (PACT)
 
-This project showcases a Hardhat 3 Beta project using the native Node.js test runner (`node:test`) and the `viem` library for Ethereum interactions.
+PiastreACT (PACT) is a fixed-supply ERC-20 token used for governance and coordination within the Piastre ecosystem.
 
-To learn more about the Hardhat 3 Beta, please visit the [Getting Started guide](https://hardhat.org/docs/getting-started#getting-started-with-hardhat-3). To share your feedback, join our [Hardhat 3 Beta](https://hardhat.org/hardhat3-beta-telegram-group) Telegram group or [open an issue](https://github.com/NomicFoundation/hardhat/issues/new) in our GitHub issue tracker.
+This repository uses Hardhat 3 (Beta) with the Node.js native test runner (node:test) and viem for Ethereum interactions.
 
-## Project Overview
+⸻
 
-This example project includes:
+Contract Overview
 
-- A simple Hardhat configuration file.
-- Foundry-compatible Solidity unit tests.
-- TypeScript integration tests using [`node:test`](nodejs.org/api/test.html), the new Node.js native test runner, and [`viem`](https://viem.sh/).
-- Examples demonstrating how to connect to different types of networks, including locally simulating OP mainnet.
+PiastreACTToken
+	•	Standard: ERC-20 (OpenZeppelin v5)
+	•	Symbol: PACT
+	•	Decimals: 18
+	•	Max supply: 1,000 PACT
+	•	Premint: none
+	•	Minting: owner-only
+	•	Supply increase: capped (cannot exceed max supply)
+	•	Burning: not supported
+	•	Permit / governance logic: intentionally excluded
 
-## Usage
+⸻
 
-### Running Tests
+Repository Structure
 
-To run all the tests in the project, execute the following command:
+.
+├── contracts/
+│   └── PiastreACTToken.sol
+├── test/
+│   └── PiastreACTToken.test.ts
+├── hardhat.config.ts
+├── package.json
+├── tsconfig.json
+└── README.md
 
-```shell
-npx hardhat test
+⸻
+
+Requirements
+	•	Node.js ≥ 20
+	•	npm
+
+⸻
+
+Install
+
+```bash
+npm install
 ```
 
-You can also selectively run the Solidity or `node:test` tests:
+⸻
 
-```shell
-npx hardhat test solidity
+Testing
+
+Run all tests:
+
+```bash
 npx hardhat test nodejs
 ```
 
-### Make a deployment to Sepolia
+⸻
 
-This project includes an example Ignition module to deploy the contract. You can deploy this module to a locally simulated chain or to Sepolia.
+⸻
 
-To run the deployment to a local chain:
+Deployment
 
-```shell
-npx hardhat ignition deploy ignition/modules/Counter.ts
+Local (simulated network)
+
+```bash
+npx hardhat ignition deploy ignition/modules/PiastreACTToken.ts
 ```
 
-To run the deployment to Sepolia, you need an account with funds to send the transaction. The provided Hardhat configuration includes a Configuration Variable called `SEPOLIA_PRIVATE_KEY`, which you can use to set the private key of the account you want to use.
+⸻
 
-You can set the `SEPOLIA_PRIVATE_KEY` variable using the `hardhat-keystore` plugin or by setting it as an environment variable.
+Sepolia
 
-To set the `SEPOLIA_PRIVATE_KEY` config variable using `hardhat-keystore`:
+Set the private key:
 
-```shell
+```bash
 npx hardhat keystore set SEPOLIA_PRIVATE_KEY
+
+```
+⸻
+
+Deploy:
+
+```bash
+npx hardhat ignition deploy –network sepolia ignition/modules/PiastreACTToken.ts
+
 ```
 
-After setting the variable, you can run the deployment with the Sepolia network:
+⸻
 
-```shell
-npx hardhat ignition deploy --network sepolia ignition/modules/Counter.ts
-```
+License
+
+MIT
+
+⸻
